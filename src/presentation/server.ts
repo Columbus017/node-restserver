@@ -31,15 +31,10 @@ export class Server {
     //* Public Folder
     this.app.use(express.static(this.publicPath));
 
-    this.app.get('/', (req, res) => {
-      const indexPath = path.join(__dirname + `../../../${ this.publicPath }/index.html`);
-      res.sendFile(indexPath);
-    });
-
     //* Routes
     this.app.use( this.routes );
 
-    // Catch-all handler for SPA routing
+    //* Catch-all handler for SPA routing
     this.app.use((req, res) => {
       const indexPath = path.join(__dirname + `../../../${ this.publicPath }/index.html`);
       res.sendFile(indexPath);
